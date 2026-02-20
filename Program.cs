@@ -240,11 +240,13 @@ if (app.Environment.IsDevelopment())
 
 // Habilita Swagger y expone la UI en la ruta /swagger.
 app.UseSwagger();
-app.UseSwaggerUI(c =>
+app.UseSwaggerUI();
+app.UseReDoc(c =>
 {
-    c.SwaggerEndpoint("/swagger/v1/swagger.json", "ApiGenericaCsharp v1");
-    c.RoutePrefix = "swagger";
+    c.RoutePrefix = "redoc";
+    c.SpecUrl("/swagger/v1/swagger.json");
 });
+
 
 // Redirige HTTP a HTTPS para mejorar la seguridad.
 app.UseHttpsRedirection();
